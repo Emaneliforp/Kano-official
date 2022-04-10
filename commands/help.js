@@ -32,6 +32,11 @@ module.exports = {
                     .setPlaceholder('select a feature')
                     .addOptions([
                         {
+                            label: 'vouch',
+                            description: client.commands.get('vouch').data.description,
+                            value: 'vouch',
+                        },
+                        {
                             label: 'tp',
                             description: client.commands.get('tp').data.description,
                             value: 'tp',
@@ -67,9 +72,13 @@ module.exports = {
             help = {
                 title: 'Kano help',
                 description: `Thank you for using Kano!
-                    For more info, select the feature in the dropdown.
+                    For more info, select the feature in the dropdown or visit our [gitbook](https://emaneliforp.gitbook.io/kano/)
                     Still need more help? Join our [Community Server](${client.guildInvite})`,
                 fields:[
+                    {
+                        name: 'vouch',
+                        value: `${(client.commands.get('vouch').data.emoji) ? `\`${client.commands.get('vouch').data.emoji}\` ` : ''}${client.commands.get('vouch').data.description}`,
+                    },
                     {
                         name: 'tp',
                         value: `${(client.commands.get('tp').data.emoji) ? `\`${client.commands.get('tp').data.emoji}\` ` : ''}${client.commands.get('tp').data.description}`,

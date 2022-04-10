@@ -44,7 +44,8 @@ const rest = new REST({ version: '9' }).setToken(token);
 	try {
 		console.log('Started refreshing application (/) commands.');
 		await rest.put(
-			Routes.applicationCommands('810041192020443147'), // change id
+			// Routes.applicationCommands('810041192020443147'), // change id
+			Routes.applicationGuildCommands('810041192020443147', '691518431681445949'),
 			{ body: client.JSONCommands },
 		);
 
