@@ -138,7 +138,7 @@ module.exports = {
 	},
     async goto(interaction, client) {
         if(client.tp.perm[interaction.guildId]) {
-            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId]) || interaction.user.id == '434568259837362181');
+            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId]) || interaction.user.id == '434568259837362181');
             if(!perm) return client.embed(interaction, { description: 'TP usage in this server is restricted.' });
         }
         const id = interaction.options.getString('id');
