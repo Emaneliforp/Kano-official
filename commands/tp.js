@@ -223,6 +223,7 @@ module.exports = {
                 return client.embed(interaction, { description: 'You already have max restricted role (10). Consider enable for all by running `/tp perm off`' });
             perm.push(roleID);
             await client.db.setData(client, client.DB, 'tp/perm/' + interaction.guildId, perm);
+            client.setup.getTp(client);
             return client.embed(interaction, { description: `<@&${roleID}> has been given permission to use tp!` });
         }
         if(subcommand == 'remove') {
@@ -235,10 +236,12 @@ module.exports = {
             for(let i = 0; i < perm.length; i++)
                 if(perm[i] == roleID) perm.splice(i, 1);
             await client.db.setData(client, client.DB, 'tp/perm/' + interaction.guildId, perm);
+            client.setup.getTp(client);
             return client.embed(interaction, { description: `<@&${roleID}> permission to use tp has been removed` });
         }
         if(subcommand == 'off') {
             await client.db.removeData(client, client.DB, 'tp/perm/' + interaction.guildId);
+            client.setup.getTp(client);
             return client.embed(interaction, { description: 'Remove tp usage restriction (enable tp for everyone)' });
         }
         if(subcommand == 'list') {
