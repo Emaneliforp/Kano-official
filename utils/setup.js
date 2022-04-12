@@ -51,6 +51,6 @@ module.exports = class Setup {
         if(!client.vouch.mod) client.vouch.mod = {};
     }
     static async getTp(client) {
-        client.tp.perm = await client.db.getData(client, client.DB, 'tp/perm');
+        client.tp.perm = await client.db.getData(client, client.DB, 'tpPerm/');
     }
 };

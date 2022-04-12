@@ -215,37 +215,37 @@ module.exports = {
         const subcommand = interaction.options.getSubcommand(false);
         if(subcommand == 'add') {
             const roleID = interaction.options.getRole('role').id;
-            let perm = await client.db.getData(client, client.DB, 'tp/perm/' + interaction.guildId);
+            let perm = await client.db.getData(client, client.DB, 'tpPerm/' + interaction.guildId);
             if(!perm) perm = [];
             if(perm.includes(roleID))
                 return client.embed(interaction, { description: `<@&${roleID}> already has permission to use tp.` });
             if(perm.length >= 10)
                 return client.embed(interaction, { description: 'You already have max restricted role (10). Consider enable for all by running `/tp perm off`' });
             perm.push(roleID);
-            await client.db.setData(client, client.DB, 'tp/perm/' + interaction.guildId, perm);
+            await client.db.setData(client, client.DB, 'tpPerm/' + interaction.guildId, perm);
             client.setup.getTp(client);
             return client.embed(interaction, { description: `<@&${roleID}> has been given permission to use tp!` });
         }
         if(subcommand == 'remove') {
             const roleID = interaction.options.getRole('role').id;
-            const perm = await client.db.getData(client, client.DB, 'tp/perm/' + interaction.guildId);
+            const perm = await client.db.getData(client, client.DB, 'tpPerm/' + interaction.guildId);
             if(!perm)
                 return client.embed(interaction, { description: 'No restricted role has been setup' });
             if(!perm.includes(roleID))
                 return client.embed(interaction, { description: `<@&${roleID}> doesn't have permission to use tp.` });
             for(let i = 0; i < perm.length; i++)
                 if(perm[i] == roleID) perm.splice(i, 1);
-            await client.db.setData(client, client.DB, 'tp/perm/' + interaction.guildId, perm);
+            await client.db.setData(client, client.DB, 'tpPerm/' + interaction.guildId, perm);
             client.setup.getTp(client);
             return client.embed(interaction, { description: `<@&${roleID}> permission to use tp has been removed` });
         }
         if(subcommand == 'off') {
-            await client.db.removeData(client, client.DB, 'tp/perm/' + interaction.guildId);
+            await client.db.removeData(client, client.DB, 'tpPerm/' + interaction.guildId);
             client.setup.getTp(client);
             return client.embed(interaction, { description: 'Remove tp usage restriction (enable tp for everyone)' });
         }
         if(subcommand == 'list') {
-            const perm = await client.db.getData(client, client.DB, 'tp/perm/' + interaction.guildId);
+            const perm = await client.db.getData(client, client.DB, 'tpPerm/' + interaction.guildId);
             let list = '';
             let e = false;
             for(const i in perm) {
