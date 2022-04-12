@@ -20,11 +20,6 @@ module.exports = {
                     value: `[\`🙌\` Here](${client.guildInvite})`,
                     inline: true,
                 },
-                {
-                    name: 'Patreon',
-                    value: `[\`💖\` Here](${client.patreon})`,
-                    inline: true,
-                },
             ],
         };
 		return client.embed(interaction, content);

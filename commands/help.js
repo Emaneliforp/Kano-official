@@ -13,6 +13,10 @@ module.exports = {
                 required: false,
                 choices: [
                     {
+                        name: 'vouch',
+                        value: 'vouch',
+                    },
+                    {
                         name: 'tp',
                         value: 'tp',
                     },
