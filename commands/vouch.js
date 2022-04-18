@@ -29,11 +29,11 @@ module.exports = {
 		name: 'vouch',
 		description: 'Check vouches to prevent scam and vouch people that you trust',
 		emoji: '📮',
-		help: `Check vouches to prevent scam and vouch people that you trust 📮.
+		help: `\`📮\` Check vouches to prevent scam and vouch people that you trust.
         *Vouch isn't the absolute scam prevention. Always check profile, inventory, and ask for middleman if needed.*\n
         \`vouch view <user>\`: get the user's vouch\n
         \`vouch bump [user]\`: vouch the user
-        - **vouch channel must be setup.**.
+        - **vouch channel must be setup.**
         - only vouch after you have successfully completed the trade and **avoid vouch for the same person multiple times**.
         __why my vouch didn't pass through?__
         \`🕒\` you can vouch the same person once every 10min
@@ -41,11 +41,11 @@ module.exports = {
         __**Vouch Channel (required to setup)**__
         \`vouch channel set [channel]\`: setup channel for vouch
         \`vouch channel view\`: view channel for vouch
-        \`vouch channel off\`: turn off channel for vouch
+        \`vouch channel off\`: turn off channel for vouch\n
         __**Mod Role**__
-        \`vouch modRole set [role]\`: give role permission to use mod commands (blacklist, unblacklist, remove)
-        \`vouch modRole view\`: view vouch mod role
-        \`vouch modRole off\`: remove vouch mod role\n
+        \`vouch modrole set [role]\`: give role permission to use mod commands (blacklist, unblacklist, remove)
+        \`vouch modrole view\`: view vouch mod role
+        \`vouch modrole off\`: remove vouch mod role\n
 		__**Mod Commands**__
         \`vouch blacklist [user]\`: blacklist user from vouch locally
         \`vouch unblacklist [user]\`: unblacklist user from vouch locally
