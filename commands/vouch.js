@@ -433,7 +433,7 @@ module.exports = {
         }
     },
     async blacklist(interaction, client) {
-        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId]) || interaction.user.id == '434568259837362181');
+        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
         if(!perm) return client.embed(interaction, { description: 'You are missing permission. **Permissions needed:** `MANAGE_GUILD, VOUCH_MOD`.' });
         const user = interaction.options.getUser('user');
         let vouch = await client.db.getData(client, client.VDB, 'vouch/' + user.id);
@@ -447,7 +447,7 @@ module.exports = {
             Please report to [support server](${client.guildInvite}) for global blacklist.` });
     },
     async unblacklist(interaction, client) {
-        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId]) || interaction.user.id == '434568259837362181');
+        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
         if(!perm) return client.embed(interaction, { description: 'You are missing permission. **Permissions needed:** `MANAGE_GUILD, VOUCH_MOD`.' });
         const user = interaction.options.getUser('user');
         const localbl = await client.db.getData(client, client.VDB, 'vouch/' + user.id + '/localbl');
@@ -460,7 +460,7 @@ module.exports = {
         return client.embed(interaction, { description: `${user.username} wasn't locally blacklisted.` });
     },
     async set(interaction, client) {
-        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId]) || interaction.user.id == '434568259837362181');
+        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
         if(!perm) return client.embed(interaction, { description: 'You are missing permission. **Permissions needed:** `MANAGE_GUILD, VOUCH_MOD`.' });
         const user = interaction.options.getUser('user');
         console.log(user);
@@ -472,7 +472,7 @@ module.exports = {
         return client.embed(interaction, { description: `${user.username}'s vouch has been set to \`${amount}\`.` });
     },
     async remove(interaction, client) {
-        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId]) || interaction.user.id == '434568259837362181');
+        const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.vouch.mod[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
         if(!perm) return client.embed(interaction, { description: 'You are missing permission. **Permissions needed:** `MANAGE_GUILD, VOUCH_MOD`.' });
         const user = interaction.options.getUser('user');
         const amount = interaction.options.getInteger('vouch');

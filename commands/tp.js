@@ -138,8 +138,7 @@ module.exports = {
 	},
     async goto(interaction, client) {
         if(client.tp.perm[interaction.guildId]) {
-            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId]) || interaction.user.id == '434568259837362181');
-            console.log(perm + ': ' + client.tp.perm[interaction.guildId] + ': ' + interaction.member.roles.cache.has(client.tp.perm[interaction.guildId]));
+            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
             if(!perm) return client.embed(interaction, { description: 'TP usage in this server is restricted.' });
         }
         const id = interaction.options.getString('id');
@@ -152,6 +151,10 @@ module.exports = {
         return client.utils.sendMessage(interaction, '`⛔` TP not found!?', true);
     },
     async list(interaction, client) {
+        if(client.tp.perm[interaction.guildId]) {
+            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
+            if(!perm) return client.embed(interaction, { description: 'TP usage in this server is restricted.' });
+        }
         const tp = await client.db.getData(client, client.DB, 'tp/user/' + interaction.user.id);
         let list = '';
         let e = false;
@@ -176,6 +179,10 @@ module.exports = {
         return client.embed(interaction, content);
     },
     async add(interaction, client) {
+        if(client.tp.perm[interaction.guildId]) {
+            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
+            if(!perm) return client.embed(interaction, { description: 'TP usage in this server is restricted.' });
+        }
         const id = interaction.options.getString('id');
         let channelID = interaction.options.getString('channel');
         if(/<#(\d)+>/.test(channelID))
@@ -199,6 +206,10 @@ module.exports = {
         return client.embed(interaction, { description: `**${id}**:<#${channelID}> has been saved!` });
     },
     async remove(interaction, client) {
+        if(client.tp.perm[interaction.guildId]) {
+            const perm = (interaction.member.permissions.has(Permissions.FLAGS.MANAGE_GUILD) || interaction.member.roles.cache.has(client.tp.perm[interaction.guildId] + '') || interaction.user.id == '434568259837362181');
+            if(!perm) return client.embed(interaction, { description: 'TP usage in this server is restricted.' });
+        }
         const id = interaction.options.getString('id');
         const tp = await client.db.getData(client, client.DB, 'tp/user/' + interaction.user.id);
         if(!tp)
