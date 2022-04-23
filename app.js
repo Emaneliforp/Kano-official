@@ -11,7 +11,7 @@ const client = new Client({
 		GuildBanManager: 0, // guild.bans
 		GuildInviteManager: 0, // guild.invites
 		GuildManager: Infinity, // client.guilds
-		GuildMemberManager: Infinity, // guild.members
+		GuildMemberManager: 500, // guild.members
 		GuildStickerManager: 0, // guild.stickers
 		MessageManager: 0, // channel.messages
 		PresenceManager: 0, // guild.presences
