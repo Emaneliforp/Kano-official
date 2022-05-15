@@ -24,6 +24,10 @@ module.exports = {
                         name: 'invite',
                         value: 'invite',
                     },
+                    {
+                        name: 'verify',
+                        value: 'verify',
+                    },
                 ],
             },
         ],
@@ -49,6 +53,11 @@ module.exports = {
                             label: 'invite',
                             description: client.commands.get('invite').data.description,
                             value: 'invite',
+                        },
+                        {
+                            label: 'verify',
+                            description: client.commands.get('verify').data.description,
+                            value: 'verify',
                         },
                     ]),
             );
@@ -90,6 +99,10 @@ module.exports = {
                     {
                         name: 'invite',
                         value: `${(client.commands.get('invite').data.emoji) ? `\`${client.commands.get('invite').data.emoji}\` ` : ''}${client.commands.get('invite').data.description}`,
+                    },
+                    {
+                        name: 'verify',
+                        value: `${(client.commands.get('verify').data.emoji) ? `\`${client.commands.get('verify').data.emoji}\` ` : ''}${client.commands.get('verify').data.description}`,
                     },
                 ],
             };
